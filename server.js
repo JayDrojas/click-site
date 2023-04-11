@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+const cors = require('cors');
 const path = require("path");
 require("dotenv").config();
 
@@ -18,6 +19,7 @@ mongoose.connection.on("connected", () => {
   console.log("mongoose is connected!!");
 });
 
+app.use(cors())
 // HTTP request logger
 app.use(morgan("tiny"));
 app.use("/api", routes);

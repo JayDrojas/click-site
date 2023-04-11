@@ -26,4 +26,11 @@ router.get('/save', async(req, res) => {
     res.json(response)
 })
 
+router.post('/save', (req, res) => {
+    console.log(req.body, '-------------')
+    res.json({
+        msg: 'Data has been recieved'
+    })
+})
+
 module.exports = router;
