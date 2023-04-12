@@ -1,6 +1,8 @@
+import './geographytable.css'
+
 const GeographyTable = ({ stateClicks }) => {
   return (
-    <div>
+    <div className='clicks-table' >
       <table>
         <thead>
           <tr>
