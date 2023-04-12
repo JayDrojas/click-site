@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const ClickButton = () => {
+const ClickButton = ({ getStateClicks }) => {
   const sessionKey = "current-clicks-jdr";
   const [clicks, setClicks] = useState(
     Number(window.sessionStorage.getItem(sessionKey)) ?? 0
@@ -23,8 +23,11 @@ const ClickButton = () => {
       method: "POST",
       data: payload,
     });
-    console.log(response);
-    setClicks(total);
+    
+    if(response.status === 200) {
+        setClicks(total);
+        getStateClicks();
+    }
   }
 
   useEffect(() => {
@@ -57,6 +60,7 @@ const ClickButton = () => {
 
   return (
     <div>
+        <h1>{userState}</h1>
       <label>{clicks}</label>
       <button onClick={handleClick}>hello</button>
     </div>

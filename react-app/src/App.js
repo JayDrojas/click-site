@@ -1,12 +1,30 @@
 // import logo from './logo.svg';
-import './App.css';
-import ClickButton from './components/ClickButton';
+import axios from "axios";
+import "./App.css";
+import ClickButton from "./components/ClickButton";
+import { useEffect, useState } from "react";
+import GeographyTable from "./components/GeographyTable";
 
 function App() {
+  const [stateClicks, setStateClicks] = useState([]);
+
+  async function getStateClicks() {
+    const response = await axios({
+      url: "/api",
+    });
+
+    if (response.status === 200) setStateClicks(response.data);
+    return response;
+  }
+
+  useEffect(() => {
+    getStateClicks();
+  }, []);
+
   return (
     <div className="App">
-      <h1>hello</h1>
-      <ClickButton />
+      <ClickButton getStateClicks={getStateClicks} />
+      <GeographyTable stateClicks={stateClicks} />
     </div>
   );
 }
