@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd react-app && npm run build",
-    "install-client": "cd react-app && npm install",
-    "start": "node server.js",
-    "react-app": "cd react-app && npm start"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
