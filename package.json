@@ -4,7 +4,11 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd react-app && npm run build",
+    "install-client": "cd react-app && npm install",
+    "start": "node server.js",
+    "react-app": "cd react-app && npm start"
   },
   "repository": {
     "type": "git",
