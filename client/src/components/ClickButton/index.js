@@ -20,7 +20,7 @@ const ClickButton = ({ getStateClicks }) => {
     };
 
     const response = await axios({
-      url: "/api/save",
+      url: "https://click-site.vercel.app/api/save",
       method: "POST",
       data: payload,
     });

@@ -10,7 +10,7 @@ function App() {
 
   async function getStateClicks() {
     const response = await axios({
-      url: "/api",
+      url: "https://click-site.vercel.app/api",
     });
 
     if (response.status === 200) setStateClicks(response.data);
