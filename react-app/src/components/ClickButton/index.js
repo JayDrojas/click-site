@@ -6,22 +6,24 @@ const ClickButton = () => {
   const [clicks, setClicks] = useState(
     Number(window.sessionStorage.getItem(sessionKey)) ?? 0
   );
+  const [userState, setUserState] = useState("unknown");
 
   async function handleClick(e) {
     e.preventDefault();
+
     let total = clicks + 1;
     window.sessionStorage.setItem(sessionKey, total);
     const payload = {
-      state: "New Mexico",
+      state: userState,
       clicks: 1,
     };
 
     const response = await axios({
-      url: "http://localhost:8080/api/save",
+      url: "/api/save",
       method: "POST",
       data: payload,
     });
-    console.log(response.status)
+    console.log(response);
     setClicks(total);
   }
 
@@ -31,6 +33,26 @@ const ClickButton = () => {
     if (!storageClicks) {
       window.sessionStorage.setItem(sessionKey, "0");
     }
+  }, []);
+
+  useEffect(() => {
+    const success = async (position) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      const locationData = await axios({
+        url: `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`,
+      });
+
+      if (locationData.status === 200)
+        setUserState(locationData.data.principalSubdivision);
+    };
+
+    const error = (error) => {
+      setUserState("unknown");
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error);
   }, []);
 
   return (

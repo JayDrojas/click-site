@@ -7,29 +7,25 @@ const StateClicks = require('../models/StateClicks')
 router.get("/", async (req, res) => {  
     const data = await StateClicks.find({  })
   
-    res.json(data);
+    return res.json(data);
   });
 
 
-router.get('/save', async(req, res) => {
-    const data = {
-        state: 'New Mexico',
-        clicks: 2
-    }
-
-    const newStateClicks = new StateClicks(data)
-
-    const response = await newStateClicks.save()
-
-    console.log(response)
-
-    res.json(response)
-})
-
-router.post('/save', (req, res) => {
+router.post('/save', async (req, res) => {
     console.log(req.body, '-------------')
+
+    return res.json({
+        msg: 'terminating early to avoid saving multipple times for testing'
+    })
+    const data = req.body;
+
+    const newStateClicks = new StateClicks(data);
+
+    const response = await newStateClicks.save();
+
     res.json({
-        msg: 'Data has been recieved'
+        msg: 'Data has been recieved',
+        response: response
     })
 })
 
