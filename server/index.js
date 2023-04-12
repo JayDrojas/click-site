@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const path = require("path");
 require("dotenv").config();
+const cors = require('cors')
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -25,6 +26,7 @@ if(process.env.NODE_ENV === 'production') {
   app.use(express.static('react-app/build'))
 }
 
+app.use(cors())
 // HTTP request logger
 app.use(morgan("tiny"));
 app.use("/api", routes);

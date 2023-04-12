@@ -41,5 +41,5 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "proxy": "https://click-site.vercel.app/"
+  "proxy": "http://localhost:8080"
 }
