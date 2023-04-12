@@ -59,7 +59,7 @@ const ClickButton = ({ getStateClicks }) => {
   }, []);
 
   return (
-    <div>
+    <div className="user-ui">
         <h1>{userState}</h1>
       <label>{clicks}</label>
       <button onClick={handleClick}>hello</button>

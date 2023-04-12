@@ -23,8 +23,19 @@ function App() {
 
   return (
     <div className="App">
-      <ClickButton getStateClicks={getStateClicks} />
-      <GeographyTable stateClicks={stateClicks} />
+      <div className="heading">
+        <h1>Click the Button</h1>
+        <div className="heading-description">
+          <p>
+            Please allow location permission to record your state accurately
+          </p>
+          <p>Otherwise clicks will be recorded to unknown</p>
+        </div>
+      </div>
+      <div className="main-content">
+        <ClickButton getStateClicks={getStateClicks} />
+        <GeographyTable stateClicks={stateClicks} />
+      </div>
     </div>
   );
 }
