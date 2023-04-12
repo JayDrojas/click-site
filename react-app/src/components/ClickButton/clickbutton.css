@@ -17,11 +17,12 @@
 }
 
 .user-ui button {
-    width: 30%;
+    width: fit-content;
     height: 50px;
     background-color: aliceblue;
     border-radius: 4px;
     font-size: larger;
+    font-weight: bolder;
     border: transparent;
     margin: 10px;
 }
