@@ -1,3 +1,4 @@
+import "./clickbutton.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -23,10 +24,10 @@ const ClickButton = ({ getStateClicks }) => {
       method: "POST",
       data: payload,
     });
-    
-    if(response.status === 200) {
-        setClicks(total);
-        getStateClicks();
+
+    if (response.status === 200) {
+      setClicks(total);
+      getStateClicks();
     }
   }
 
@@ -52,7 +53,7 @@ const ClickButton = ({ getStateClicks }) => {
     };
 
     const error = (error) => {
-      setUserState("unknown");
+      setUserState("Unknown");
     };
 
     navigator.geolocation.getCurrentPosition(success, error);
@@ -60,9 +61,11 @@ const ClickButton = ({ getStateClicks }) => {
 
   return (
     <div className="user-ui">
-        <h1>{userState}</h1>
-      <label>{clicks}</label>
-      <button onClick={handleClick}>hello</button>
+      <h1>Your state is : {userState}</h1>
+      <label className="click-title">
+        You have clicked it <span>{clicks}</span> times.
+      </label>
+      <button onClick={handleClick}>Click here!</button>
     </div>
   );
 };

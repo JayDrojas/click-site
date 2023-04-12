@@ -1,0 +1,27 @@
+.user-ui {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.click-title {
+    font-weight: bold;
+    font-size: large;
+    padding: 10px;
+}
+
+.click-title span {
+    font-weight: bolder;
+    color:crimson;
+    font-size: larger;
+}
+
+.user-ui button {
+    width: 30%;
+    height: 50px;
+    background-color: aliceblue;
+    border-radius: 4px;
+    font-size: larger;
+    border: transparent;
+    margin: 10px;
+}
