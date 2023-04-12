@@ -7,7 +7,7 @@ const ClickButton = ({ getStateClicks }) => {
   const [clicks, setClicks] = useState(
     Number(window.sessionStorage.getItem(sessionKey)) ?? 0
   );
-  const [userState, setUserState] = useState("unknown");
+  const [userState, setUserState] = useState("Unknown");
 
   async function handleClick(e) {
     e.preventDefault();
