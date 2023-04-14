@@ -8,10 +8,11 @@ const ClickButton = ({ getStateClicks }) => {
     Number(window.sessionStorage.getItem(sessionKey)) ?? 0
   );
   const [userState, setUserState] = useState("Unknown");
+  const [loadingClick, setLoadingClick] = useState(false);
 
   async function handleClick(e) {
     e.preventDefault();
-
+    setLoadingClick(true)
     let total = clicks + 1;
     window.sessionStorage.setItem(sessionKey, total);
     const payload = {
@@ -29,6 +30,7 @@ const ClickButton = ({ getStateClicks }) => {
       setClicks(total);
       getStateClicks();
     }
+    setLoadingClick(false)
   }
 
   useEffect(() => {
@@ -65,7 +67,7 @@ const ClickButton = ({ getStateClicks }) => {
       <label className="click-title">
         You have clicked it <span>{clicks}</span> times.
       </label>
-      <button onClick={handleClick}>Click here!</button>
+      <button disabled={loadingClick} onClick={handleClick}>Click here!</button>
     </div>
   );
 };

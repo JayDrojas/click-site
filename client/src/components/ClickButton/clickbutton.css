@@ -26,3 +26,7 @@
     border: transparent;
     margin: 10px;
 }
+
+.user-ui button:hover {
+    cursor: pointer;
+}
